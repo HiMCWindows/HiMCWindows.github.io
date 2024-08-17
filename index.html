@@ -141,6 +141,7 @@
             const inputPassword = document.getElementById("password").value;
             const hashedPassword = await hashPassword(inputPassword);
 
+            // 更新： 使用正确哈希值 | By Net
             const correctHashedPassword = '5e884898da28047151d0e56f8dc6292773603d0d6a3b59f8e72f6f7a6a5f5d21';
 
             if (hashedPassword === correctHashedPassword) {
