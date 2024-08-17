@@ -4,43 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Protected Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background: #6e8efb;
+            border: none;
+            padding: 10px;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"]:hover {
+            background: #5a6dcb;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Please enter the password</h2>
+        <form id="passwordForm">
+            <input type="password" id="password" placeholder="Enter password">
+            <input type="submit" value="Submit">
+        </form>
+        <p id="error-message" class="error"></p>
+    </div>
+
     <script>
-        // 禁用 F12 键和其他开发者工具相关的快捷键
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'C' || event.key === 'J')) || (event.ctrlKey && event.key === 'U')) {
+            if (event.key === 'F12') {
                 event.preventDefault();
+                return false;
             }
         });
 
-        // 禁用右键点击
         document.addEventListener('contextmenu', function(event) {
             event.preventDefault();
         });
 
-        // 预先加密的密码 "BFWJack123!1" 使用 Base64
         const encryptedPassword = "QkZXSmFjazEyMyEx";
 
         document.getElementById("passwordForm").onsubmit = function(event) {
-            event.preventDefault(); // 阻止表单默认提交行为
+            event.preventDefault();
             checkPassword();
         };
 
         function checkPassword() {
             const inputPassword = document.getElementById("password").value;
-            // 将输入的密码进行 Base64 加密后与存储的密码比对
             if (btoa(inputPassword) === encryptedPassword) {
-                window.location.href = "https://HiMCWindows.github.io/serverclient/index.html";
+                window.location.href = "jackdwh.top:32768/DoNotOpen.mp4";
             } else {
-                alert("Incorrect password. Please try again.");
+                document.getElementById("error-message").textContent = "Incorrect password. Please try again.";
             }
         }
     </script>
-</head>
-<body>
-    <h2>Please enter the password:</h2>
-    <form id="passwordForm">
-        <input type="password" id="password" placeholder="Enter password">
-        <input type="submit" value="Submit">
-    </form>
 </body>
 </html>
