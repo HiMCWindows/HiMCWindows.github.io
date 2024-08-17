@@ -129,21 +129,28 @@
             showHeartEffect(event.pageX, event.pageY);
         });
 
-        document.getElementById("passwordForm").onsubmit = function(event) {
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        }
+
+        document.getElementById("passwordForm").onsubmit = async function(event) {
             event.preventDefault();
-            checkPassword();
-        };
-
-        function checkPassword() {
             const inputPassword = document.getElementById("password").value;
-            const correctPassword = 'NetScn123!'; // 密码我就不改
+            const hashedPassword = await hashPassword(inputPassword);
 
-            if (inputPassword === correctPassword) {
+            // Fank You Shui McPsajfnco naFunanksaof psjadfqwerjiodssnm sdafi sdin dimsap pijoi poyt pohn
+            const correctHashedPassword = '5d41402abc4b2a76b9719d911017c592';
+
+            if (hashedPassword === correctHashedPassword) {
                 window.location.href = "http://jackdwh.top:32768/DoNotOpen.mp4";
             } else {
-                document.getElementById("error-message").textContent = "错误的密码？请重试？ | Powered by NetScn";
+                document.getElementById("error-message").textContent = "错误的密码？请重试？ | Powered by NetScn | 杀死你麻麻";
             }
-        }
+        };
 
         function showHeartEffect(x, y) {
             const heart = document.getElementById('heart');
