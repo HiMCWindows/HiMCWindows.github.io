@@ -1,13 +1,78 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<html>
- <head>
-  <title>Index of /</title>
- </head>
- <body>
-<h1>Index of /</h1>
-<ul><li><a href="chaxun.html"> chaxun.html</a></li>
-<li><a href="index.php"> index.php</a></li>
-<li><a href="version/"> version/</a></li>
-<li><a href="video.mp4"> video.mp4</a></li>
-</ul>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云端系统 | v1.0</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #password-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="password-form">
+    <h2>输入管理员用户账户控制密码</h2>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="submit" value="Submit" onclick="checkPassword()">
+</div>
+
+<script>
+
+    const encryptedPassword = "QkZXSmljayEyMyEx";
+
+    function checkPassword() {
+
+        const inputPassword = document.getElementById('password').value;
+        
+
+        const decodedPassword = atob(encryptedPassword);
+
+
+        if (inputPassword === decodedPassword) {
+            window.location.href = "https://HiMCWindows.github.io/serverclient/index.html";
+        } else {
+            alert("[云端智能查询系统] 请重新尝试你的密码");
+        }
+    }
+ <hr>
+  <p> C r e a t e d b y N e t S c n 2 0 2 4
+  </p>
+</script>
+
+</body>
+</html>
