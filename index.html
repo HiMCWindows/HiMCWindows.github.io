@@ -23,6 +23,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 350px;
             text-align: center;
+            position: relative;
         }
 
         h2 {
@@ -128,28 +129,21 @@
             showHeartEffect(event.pageX, event.pageY);
         });
 
-        async function hashPassword(password) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-        }
-
-        document.getElementById("passwordForm").onsubmit = async function(event) {
+        document.getElementById("passwordForm").onsubmit = function(event) {
             event.preventDefault();
+            checkPassword();
+        };
+
+        function checkPassword() {
             const inputPassword = document.getElementById("password").value;
-            const hashedPassword = await hashPassword(inputPassword);
+            const correctPassword = 'NetScn123!'; // 密码我就不改
 
-            // 更新： 使用正确哈希值 | By Net
-            const correctHashedPassword = '5e884898da28047151d0e56f8dc6292773603d0d6a3b59f8e72f6f7a6a5f5d21';
-
-            if (hashedPassword === correctHashedPassword) {
+            if (inputPassword === correctPassword) {
                 window.location.href = "http://jackdwh.top:32768/DoNotOpen.mp4";
             } else {
-                document.getElementById("error-message").textContent = "错误的密码？请重试？ | Powered by NetScn | 杀死你麻麻";
+                document.getElementById("error-message").textContent = "错误的密码？请重试？ | Powered by NetScn";
             }
-        };
+        }
 
         function showHeartEffect(x, y) {
             const heart = document.getElementById('heart');
